@@ -10,11 +10,7 @@ module Rubbr
         super
 
         @name = 'Mercurial'
-        disable_stdout do
-          disable_stderr do
-            @executable = 'hg' if system 'which hg'
-          end
-        end
+        @executable = :hg if executable? :hg
 
         @revision, @date = parse_scm_stats
 
@@ -24,7 +20,7 @@ module Rubbr
       def parse_scm_stats
         return [nil, nil] unless @executable
 
-        raw_stats = `hg tip`
+        raw_stats = `#@executable tip`
         revision = raw_stats.scan(/^changeset: +(.+)/).first.first
         date = raw_stats.scan(/^date: +(.+)/).first.first
 

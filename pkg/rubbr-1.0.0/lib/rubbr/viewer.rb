@@ -33,11 +33,7 @@ module Rubbr
 
       def find_viewer
         @executables.each do |executable|
-          disable_stdout do
-            disable_stderr do
-              return executable if system "which #{executable}"
-            end
-          end
+          return executable if executable? executable
         end
       end
 
