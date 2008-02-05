@@ -39,7 +39,7 @@ module Rubbr
 
       def launch
         return unless viewer = find_viewer
-        system "#{viewer} #{distribution_file}"
+        fork { exec "#{viewer} #{distribution_file}" }
         notice "Display of #@view_name completed for: #{@distribution_name}" +
                ".#@view_name in #{Rubbr.options[:distribution_dir]}"
       end
