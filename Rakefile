@@ -1,7 +1,6 @@
-# -*- ruby -*-
-
 require 'rubygems'
 require 'hoe'
+require 'spec/rake/spectask'
 require './lib/rubbr.rb'
 
 Hoe.new('rubbr', Rubbr::VERSION) do |p|
@@ -15,4 +14,8 @@ Hoe.new('rubbr', Rubbr::VERSION) do |p|
   p.remote_rdoc_dir = ''
 end
 
-# vim: syntax=Ruby
+desc "Run all specs"
+Spec::Rake::SpecTask.new('specs') do |t|
+  t.spec_opts = ["--format", "specdoc", "--colour"]
+  t.spec_files = Dir['specs/*_spec.rb'].sort
+end
