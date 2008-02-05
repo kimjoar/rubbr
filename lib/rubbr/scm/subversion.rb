@@ -10,11 +10,7 @@ module Rubbr
         super
 
         @name = 'Subversion'
-        disable_stdout do
-          disable_stderr do
-            @executable = 'svn' if system 'which svn'
-          end
-        end
+        @executable = :svn if executable? :svn
 
         @revision, @date = parse_scm_stats
 
@@ -24,7 +20,7 @@ module Rubbr
       def parse_scm_stats
         return [nil, nil] unless @executable
 
-        raw_stats = `svn info`
+        raw_stats = `#@executable info`
         revision = raw_stats.scan(/^Revision: (\d+)/).first.first
         date = raw_stats.scan(/^Last Changed Date: (.+)/).first.first
 

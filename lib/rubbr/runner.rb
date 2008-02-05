@@ -24,11 +24,7 @@ module Rubbr
 
       def initialize(input_file, silent, executable)
         @input_file = input_file
-        disable_stdout do
-          disable_stderr do
-            @executable = executable if system "which #{executable}"
-          end
-        end
+        @executable = executable if executable? executable
         @silent = silent
         @errors = []
 

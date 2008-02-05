@@ -34,5 +34,12 @@ module Rubbr
       yield
       STDIN.reopen(old_stdinn)
     end
+
+    def executable?(executable)
+      disable_stdout do
+        @existing = system("which #{executable}")
+      end
+      @existing
+    end
   end
 end
