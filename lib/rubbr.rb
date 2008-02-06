@@ -74,7 +74,7 @@ module Rubbr
       end
 
       def spell
-        Rubbr::Spell.check
+        Rubbr::Spell.new.check
       end
   end
 end

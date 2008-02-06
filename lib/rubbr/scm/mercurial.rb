@@ -10,7 +10,7 @@ module Rubbr
         super
 
         @name = 'Mercurial'
-        @executable = :hg if executable? :hg
+        @executable = valid_executable :hg
 
         @revision, @date = parse_scm_stats
 

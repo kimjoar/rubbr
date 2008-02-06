@@ -41,5 +41,14 @@ module Rubbr
       end
       @existing
     end
+
+    def valid_executable(executable)
+      if executable?(executable)
+        executable
+      else
+        error "Missing executable #{executable}"
+        exit
+      end
+    end
   end
 end

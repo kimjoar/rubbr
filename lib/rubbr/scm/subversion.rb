@@ -10,7 +10,7 @@ module Rubbr
         super
 
         @name = 'Subversion'
-        @executable = :svn if executable? :svn
+        @executable = valid_executable :svn
 
         @revision, @date = parse_scm_stats
 
