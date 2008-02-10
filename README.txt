@@ -1,6 +1,6 @@
 = rubbr
 
-* http://rubbr.rubyforge.org
+* http://rubyforge.org/projects/rubbr/
 * by Eivind Uggedal <eu@redflavor.com>
 
 == DESCRIPTION:
