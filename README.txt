@@ -1,6 +1,6 @@
-rubbr
-    by Eivind Uggedal
-    http://rubbr.rubyforge.org
+= rubbr
+
+* http://rubbr.rubyforge.org
 
 == DESCRIPTION:
   
