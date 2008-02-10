@@ -1,6 +1,7 @@
 = rubbr
 
 * http://rubbr.rubyforge.org
+* by Eivind Uggedal <eu@redflavor.com>
 
 == DESCRIPTION:
   
@@ -48,7 +49,7 @@ gem install rubbr
 
 (The MIT License)
 
-Copyright (c) 2008 Eivind Uggedal
+Copyright (c) 2008 Eivind Uggedal <eu@redflavor.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
