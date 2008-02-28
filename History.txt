@@ -1,3 +1,7 @@
+== 1.0.1 / 2008-02-28
+
+* Exit program on errors and sort warnings
+
 == 1.0.1 / 2008-02-10
 
 * Many small bugfixes and code refactorings
