@@ -30,6 +30,9 @@ module Rubbr
             if latex.warnings.join =~ /There were undefined citations/
               latex = preprocessor.new(base_latex_file, true)
             end
+            if latex.warnings.join =~ /Label\(s\) may have changed\. Rerun/
+              latex = preprocessor.new(base_latex_file, true)
+            end
             latex.silent = false
             latex.feedback
             if bibtex
