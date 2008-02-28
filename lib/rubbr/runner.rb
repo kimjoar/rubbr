@@ -52,6 +52,7 @@ module Rubbr
           @errors.each do |message|
             error message
           end
+          exit
         end
       end
     end
