@@ -1,4 +1,8 @@
-== 1.0.1 / 2008-02-28
+== 1.0.3 / 2008-02-28
+
+* Rerun latex when labels are updated.
+
+== 1.0.2 / 2008-02-28
 
 * Exit program on errors and sort warnings
 
