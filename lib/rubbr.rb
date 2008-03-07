@@ -2,7 +2,7 @@ require 'optparse'
 $:.unshift File.dirname(__FILE__)
 
 module Rubbr
-  VERSION = '1.0.3'
+  VERSION = '1.0.4'
 
   autoload :Options,       'rubbr/options'
   autoload :Cli,           'rubbr/cli'
