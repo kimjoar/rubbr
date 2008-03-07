@@ -11,7 +11,7 @@ module Rubbr
   module Builder
 
     # Build to the spesified format.
-    def self.build(format)
+    def self.build(format = :pdf, engine = :latex)
       case format
       when :dvi
         Rubbr::Builder::Tex.build
@@ -19,9 +19,11 @@ module Rubbr
         Rubbr::Builder::Tex.build
         Rubbr::Builder::Dvi.build
       else
-        Rubbr::Builder::Tex.build
-        Rubbr::Builder::Dvi.build
-        Rubbr::Builder::Ps.build
+        Rubbr::Builder::Tex.build(engine)
+        if engine == :latex
+          Rubbr::Builder::Dvi.build
+          Rubbr::Builder::Ps.build
+        end
       end
     end
 

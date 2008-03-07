@@ -32,6 +32,11 @@ module Rubbr
           options[:format] = format
         end
 
+        opts.on('-e', '--engine [ENGINE]', [:pdflatex, :ps, :pdf],
+          'Select processing engine (latex, pdflatex)') do |engine|
+          options[:engine] = engine
+        end
+
         opts.on('-v', '--view', 'View the document') do
           options[:view] = true
         end
@@ -56,20 +61,24 @@ module Rubbr
       if options[:spell]
         spell
       elsif options[:view]
-        view(options[:format])
+        view(options[:format], options[:engine])
       else
-        build(options[:format])
+        build(options[:format], options[:engine])
       end
     end
 
     private
 
-      def build(format)
-        Rubbr::Builder.build(format)
+      def build(format, engine)
+        if engine
+          Rubbr::Builder.build(format, engine)
+        else
+          Rubbr::Builder.build(format)
+        end
       end
 
-      def view(format)
-        build(format)
+      def view(format, engine)
+        build(format, engine)
         Rubbr::Viewer.view(format)
       end
 
