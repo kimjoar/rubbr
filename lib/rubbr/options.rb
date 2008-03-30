@@ -51,15 +51,11 @@ module Rubbr
         end
 
         def absolute_paths(options)
-          relatives = %w(source_dir
-                         build_dir
-                         distribution_dir
-                         vendor_dir
-                         graphics_dir
-                         spell_dir)
-          relatives.each do |key|
-            options[key.to_sym] = File.join(options[:root_dir],
-                                            options[key.to_sym])
+          options.each_key do |key|
+            if key.to_s =~ /\w+_dir/ && key != :root_dir
+              options[key.to_sym] = File.join(options[:root_dir],
+                                              options[key.to_sym])
+            end
           end
           options
         end

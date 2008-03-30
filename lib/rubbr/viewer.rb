@@ -3,13 +3,17 @@ module Rubbr
 
     # View the spesified format.
     def self.view
-      case Rubbr.options[:format]
-      when :dvi
-        Rubbr::Viewer::Dvi.new.launch
-      when :ps
-        Rubbr::Viewer::Ps.new.launch
-      else
+      if Rubbr.options[:engine] == :pdflatex
         Rubbr::Viewer::Pdf.new.launch
+      else
+        case Rubbr.options[:format]
+        when :dvi
+          Rubbr::Viewer::Dvi.new.launch
+        when :ps
+          Rubbr::Viewer::Ps.new.launch
+        else
+          Rubbr::Viewer::Pdf.new.launch
+        end
       end
     end
 

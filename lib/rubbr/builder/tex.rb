@@ -2,20 +2,20 @@ module Rubbr
   module Builder
     class Tex < Base
       class << self
-        def build(engine = :latex)
+        def build
 
           clean_build_dir
 
           base_latex_file = Rubbr.options[:base_latex_file]
           base_bibtex_file = Rubbr.options[:base_bibtex_file]
 
-          case engine
-          when :latex
-            @output_format = :dvi
-            preprocessor = Rubbr::Runner::LaTeX
+          case Rubbr.options[:engine]
           when :pdflatex
             @output_format = :pdf
             preprocessor = Rubbr::Runner::PdfLaTeX
+          else
+            @output_format = :dvi
+            preprocessor = Rubbr::Runner::LaTeX
           end
 
           build_dir do
