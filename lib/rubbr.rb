@@ -36,7 +36,7 @@ module Rubbr
           @@cmd_opts[:engine] = engine
         end
 
-        opts.on('-v', '--view', 'View the document') do
+        opts.on('-d', '--display', 'Display the document') do
           @@cmd_opts[:view] = true
         end
 
