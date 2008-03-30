@@ -2,8 +2,8 @@ module Rubbr
   module Viewer
 
     # View the spesified format.
-    def self.view(format)
-      case format
+    def self.view
+      case Rubbr.options[:format]
       when :dvi
         Rubbr::Viewer::Dvi.new.launch
       when :ps

@@ -62,31 +62,13 @@ module Rubbr
       end
 
       if @@cmd_opts[:spell]
-        spell
+        Rubbr::Spell.new.check
       elsif @@cmd_opts[:view]
-        view(@@cmd_opts[:format], @@cmd_opts[:engine])
+        Rubbr::Builder.build
+        Rubbr::Viewer.view
       else
-        build(@@cmd_opts[:format], @@cmd_opts[:engine])
+        Rubbr::Builder.build
       end
     end
-
-    private
-
-      def build(format, engine)
-        if engine
-          Rubbr::Builder.build(format, engine)
-        else
-          Rubbr::Builder.build(format)
-        end
-      end
-
-      def view(format, engine)
-        build(format, engine)
-        Rubbr::Viewer.view(format)
-      end
-
-      def spell
-        Rubbr::Spell.new.check
-      end
   end
 end

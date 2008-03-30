@@ -18,7 +18,9 @@ module Rubbr
           :spell_dir         => source_dir,
           :spell_file        => 'dictionary.ispell',
           :distribution_name => distribution_name(root_dir),
-          :verbose           => false
+          :verbose           => false,
+          :format            => :dvi,
+          :engine            => :latex
         }
       end
 

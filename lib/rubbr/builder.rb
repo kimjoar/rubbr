@@ -11,16 +11,16 @@ module Rubbr
   module Builder
 
     # Build to the spesified format.
-    def self.build(format = :pdf, engine = :latex)
-      case format
+    def self.build
+      case Rubbr.options[:format]
       when :dvi
         Rubbr::Builder::Tex.build
       when :ps
         Rubbr::Builder::Tex.build
         Rubbr::Builder::Dvi.build
       else
-        Rubbr::Builder::Tex.build(engine)
-        if engine == :latex
+        Rubbr::Builder::Tex.build(Rubbr.options[:format])
+        if Rubbr.options[:format] == :latex
           Rubbr::Builder::Dvi.build
           Rubbr::Builder::Ps.build
         end
