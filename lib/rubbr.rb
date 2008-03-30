@@ -15,34 +15,37 @@ module Rubbr
   autoload :Spell,         'rubbr/spell'
 
   class << self
-    # Setting up an options accessor.
+    @@cmd_opts = {}
+
     def options
-      @@options ||= Rubbr::Options.setup
+      @@global_opts ||= Rubbr::Options.setup.merge(@@cmd_opts)
     end
 
     def run(args = ARGV)
-      options = {}
-
       opts = OptionParser.new do |opts|
         opts.version = Rubbr::VERSION
-        opts.banner = 'Usage: rubbr [options]'
+        opts.banner = 'Usage: rubbr [@@cmd_opts]'
 
         opts.on('-f', '--format [FORMAT]', [:dvi, :ps, :pdf],
           'Select output format (dvi, ps, pdf)') do |format|
-          options[:format] = format
+          @@cmd_opts[:format] = format
         end
 
         opts.on('-e', '--engine [ENGINE]', [:pdflatex, :ps, :pdf],
           'Select processing engine (latex, pdflatex)') do |engine|
-          options[:engine] = engine
+          @@cmd_opts[:engine] = engine
         end
 
         opts.on('-v', '--view', 'View the document') do
-          options[:view] = true
+          @@cmd_opts[:view] = true
         end
 
         opts.on('-s', '--spell', 'Spell check source files') do
-          options[:spell] = true
+          @@cmd_opts[:spell] = true
+        end
+
+        opts.on('-v', '--verbose', 'Enable verbose feedback') do
+          @@cmd_opts[:verbose] = true
         end
 
         opts.on('-h', '--help', 'Show this help message') do
@@ -58,12 +61,12 @@ module Rubbr
         exit 1
       end
 
-      if options[:spell]
+      if @@cmd_opts[:spell]
         spell
-      elsif options[:view]
-        view(options[:format], options[:engine])
+      elsif @@cmd_opts[:view]
+        view(@@cmd_opts[:format], @@cmd_opts[:engine])
       else
-        build(options[:format], options[:engine])
+        build(@@cmd_opts[:format], @@cmd_opts[:engine])
       end
     end
 
