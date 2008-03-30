@@ -1,3 +1,7 @@
+== 1.0.5 / 2008-03-30
+
+* Small bugfixes and no default output on successful builds.
+
 == 1.0.4 / 2008-03-07
 
 * Added support for the pdflatex engine.
