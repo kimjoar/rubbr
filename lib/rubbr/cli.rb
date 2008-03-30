@@ -3,19 +3,15 @@ module Rubbr
   # Handles command line output and input.
   module Cli
     def notice(message)
-      putting message
+      puts message if Rubbr.options[:verbose]
     end
 
     def warning(message)
-      putting "  - #{message}"
+      puts "  - #{message}" if Rubbr.options[:verbose]
     end
 
     def error(message)
-      putting "  * #{message}"
-    end
-
-    def putting(output)
-      puts output if Rubbr.options[:verbose]
+      puts "  * #{message}"
     end
 
     def disable_stdout
