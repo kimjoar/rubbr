@@ -11,7 +11,6 @@ module Rubbr
           :source_dir        => source_dir,
           :build_dir         => 'tmp',
           :distribution_dir  => 'dist',
-          :template_file     => 'template.erb',
           :base_file         => 'base',
           :vendor_dir        => source_dir + '/vendor',
           :graphics_dir      => source_dir + '/graphics',
@@ -55,7 +54,6 @@ module Rubbr
           relatives = %w(source_dir
                          build_dir
                          distribution_dir
-                         template_file
                          vendor_dir
                          graphics_dir
                          spell_dir)
