@@ -21,6 +21,7 @@ module Rubbr
           build_dir do
             copy_source_files
             copy_vendor_files
+            copy_graphic_files
 
             latex = preprocessor.new(base_latex_file, true)
             if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
@@ -61,6 +62,10 @@ module Rubbr
 
           def copy_vendor_files
             copy_files(Rubbr.options[:vendor_dir], %w(sty clo cls cfg))
+          end
+
+          def copy_graphic_files
+            copy_files(Rubbr.options[:graphics_dir], %w(eps png))
           end
 
           def copy_files(source_dir, file_extensions)
