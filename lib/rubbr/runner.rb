@@ -36,6 +36,7 @@ module Rubbr
         disable_stdinn do # No input in case of error correction dialogue
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
           run = `#@executable #@input_file`
+          puts run if Rubbr.options[:verboser]
           @warnings = run.grep(messages).sort
           lines = run.split("\n")
           while lines.shift
@@ -47,6 +48,7 @@ module Rubbr
       end
 
       def feedback
+        return if Rubbr.options[:verboser] # No preformatted output.
         unless @warnings.empty?
           notice "Warnings from #@executable:"
           @warnings.each do |message|
