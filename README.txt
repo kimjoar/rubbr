@@ -9,11 +9,14 @@ Build LaTeX documents.
 
 == SYNOPSIS:
 
-  Usage: rubbr [options]
-      -f, --format [FORMAT]            Select output format (dvi, ps, pdf)
-      -v, --view                       View the document
-      -s, --spell                      Spell check source files
-      -h, --help                       Show this help message
+Usage: rubbr [options]
+  -f, --format [FORMAT]            Select output format (dvi, ps, pdf)
+  -e, --engine [ENGINE]            Select processing engine (latex, pdflatex)
+  -d, --display                    Display the document
+  -s, --spell                      Spell check source files
+  -v, --verbose                    Enable verbose feedback
+  -V, --verboser                   Enable very verbose feedback
+  -h, --help                       Show this help message
 
 Standard project layout:
 
