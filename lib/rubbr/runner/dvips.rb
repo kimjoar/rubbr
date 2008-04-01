@@ -1,7 +1,7 @@
 module Rubbr
   module Runner
     class DviPs < Base
-      def initialize(input_file, silent=false, executable='dvips')
+      def initialize(input_file, executable='dvips')
         super
       end
 

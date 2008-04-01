@@ -23,23 +23,21 @@ module Rubbr
             copy_vendor_files
             copy_graphic_files
 
-            latex = preprocessor.new(base_latex_file, true)
+            latex = preprocessor.new(base_latex_file)
             if base_bibtex_file && latex.warnings.join =~ /No file .+\.bbl/
-              bibtex = Rubbr::Runner::BibTeX.new(base_bibtex_file, true)
+              bibtex = Rubbr::Runner::BibTeX.new(base_bibtex_file)
             end
             if latex.warnings.join =~ /No file .+\.(aux|toc)/
-              latex = preprocessor.new(base_latex_file, true)
+              latex = preprocessor.new(base_latex_file)
             end
             if latex.warnings.join =~ /There were undefined citations/
-              latex = preprocessor.new(base_latex_file, true)
+              latex = preprocessor.new(base_latex_file)
             end
             if latex.warnings.join =~ /Label\(s\) may have changed\. Rerun/
-              latex = preprocessor.new(base_latex_file, true)
+              latex = preprocessor.new(base_latex_file)
             end
-            latex.silent = false
             latex.feedback
             if bibtex
-              bibtex.silent = false
               bibtex.feedback
             end
           end

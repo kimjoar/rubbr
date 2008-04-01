@@ -1,7 +1,7 @@
 module Rubbr
   module Runner
     class BibTeX < Base
-      def initialize(input_file, silent=false, executable='bibtex')
+      def initialize(input_file, executable='bibtex')
         super
       end
 

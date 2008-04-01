@@ -10,9 +10,6 @@ module Rubbr
       # The file to be run trough the latex process.
       attr_accessor :input_file
 
-      # If true no messages is sendt to standard out. Defaults to false.
-      attr_accessor :silent
-
       # The executable to be run.
       attr_accessor :executable
 
@@ -22,10 +19,9 @@ module Rubbr
       # Contains a list of possible errors after a run.
       attr_accessor :errors
 
-      def initialize(input_file, silent, executable)
+      def initialize(input_file, executable)
         @input_file = input_file
         @executable = valid_executable executable
-        @silent = silent
         @errors = []
 
         if File.exists? @input_file
@@ -37,7 +33,7 @@ module Rubbr
       end
 
       def run
-        disable_stdinn do
+        disable_stdinn do # No input in case of error correction dialogue
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
           run = `#@executable #@input_file`
           @warnings = run.grep(messages).sort
@@ -52,7 +48,6 @@ module Rubbr
       end
 
       def feedback
-        return if @silent
         unless @warnings.empty?
           notice "Warnings from #@executable:"
           @warnings.each do |message|
