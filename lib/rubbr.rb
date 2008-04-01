@@ -24,7 +24,7 @@ module Rubbr
     def run(args = ARGV)
       opts = OptionParser.new do |opts|
         opts.version = Rubbr::VERSION
-        opts.banner = 'Usage: rubbr [@@cmd_opts]'
+        opts.banner = 'Usage: rubbr [options]'
 
         opts.on('-f', '--format [FORMAT]', [:dvi, :ps, :pdf],
           'Select output format (dvi, ps, pdf)') do |format|
