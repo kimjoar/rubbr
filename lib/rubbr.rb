@@ -48,6 +48,11 @@ module Rubbr
           @@cmd_opts[:verbose] = true
         end
 
+        opts.on('-V', '--verboser', 'Enable very verbose feedback') do
+          @@cmd_opts[:verbose] = true
+          @@cmd_opts[:verboser] = true
+        end
+
         opts.on('-h', '--help', 'Show this help message') do
           puts opts
           exit 1
