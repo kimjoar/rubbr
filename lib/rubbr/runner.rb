@@ -43,7 +43,6 @@ module Rubbr
               3.times { @errors << lines.shift }
             end
           end
-          feedback
         end
       end
 
