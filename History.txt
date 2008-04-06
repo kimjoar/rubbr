@@ -1,3 +1,7 @@
+== 1.1.0 / 2008-04-06
+
+* Source files are now compiled only if they've changed since last build.
+
 == 1.0.6 / 2008-04-01
 
 * New option: more verbose output.
