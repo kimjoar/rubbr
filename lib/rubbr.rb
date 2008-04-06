@@ -8,7 +8,7 @@ module Rubbr
   autoload :Cli,           'rubbr/cli'
   autoload :Config,        'rubbr/config'
   autoload :Scm,           'rubbr/scm'
-  autoload :Template,      'rubbr/template'
+  autoload :Change,        'rubbr/change'
   autoload :Runner,        'rubbr/runner'
   autoload :Builder,       'rubbr/builder'
   autoload :Viewer,        'rubbr/viewer'

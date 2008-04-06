@@ -12,6 +12,8 @@ module Rubbr
 
     # Build to the spesified format.
     def self.build
+      return unless Rubbr::Change.d?
+
       if Rubbr.options[:engine] == :pdflatex
         Rubbr::Builder::Tex.build
       else
