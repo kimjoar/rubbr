@@ -53,6 +53,10 @@ module Rubbr
           @@cmd_opts[:verboser] = true
         end
 
+        opts.on('-c', '--color', 'Enable colorized feedback') do
+          @@cmd_opts[:color] = true
+        end
+
         opts.on('-h', '--help', 'Show this help message') do
           puts opts
           exit 1

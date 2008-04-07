@@ -20,6 +20,7 @@ module Rubbr
           :distribution_name => distribution_name(root_dir),
           :verbose           => false,
           :verboser          => false,
+          :color             => false,
           :format            => :dvi,
           :engine            => :latex
         }
