@@ -5,6 +5,7 @@ Rakefile
 bin/rubbr
 lib/rubbr.rb
 lib/rubbr/builder.rb
+lib/rubbr/change.rb
 lib/rubbr/cli.rb
 lib/rubbr/options.rb
 lib/rubbr/runner.rb
