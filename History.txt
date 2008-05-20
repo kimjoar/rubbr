@@ -1,3 +1,8 @@
+== 1.1.2 / 2008-MM-DD
+
+* BiBTeX style files (*.bst) now are copied from the vendor dir to
+  the build dir if needed.
+
 == 1.1.1 / 2008-04-07
 
 * Bugfix: lib/rubbr/change.rb not included because of faulty manifest.
