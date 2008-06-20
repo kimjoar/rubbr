@@ -31,6 +31,11 @@ module Rubbr
           @@cmd_opts[:format] = format
         end
 
+        opts.on('-F', '--force',
+          'Force execution regardless of changes') do |force|
+          @@cmd_opts[:force] = true
+        end
+
         opts.on('-e', '--engine [ENGINE]', [:pdflatex, :ps, :pdf],
           'Select processing engine (latex, pdflatex)') do |engine|
           @@cmd_opts[:engine] = engine

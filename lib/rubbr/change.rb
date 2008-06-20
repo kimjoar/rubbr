@@ -8,6 +8,8 @@ module Rubbr
     require 'yaml'
 
     def self.d?
+      return true if Rubbr.options[:force]
+
       sums = inventory
       if changes?(sums)
         write_inventory sums

@@ -18,6 +18,7 @@ module Rubbr
           :spell_file        => 'dictionary.ispell',
           :inventory_file    => '.inventory',
           :distribution_name => distribution_name(root_dir),
+          :force             => false,
           :verbose           => false,
           :verboser          => false,
           :color             => false,
