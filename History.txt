@@ -1,4 +1,9 @@
-== 1.1.2 / 2008-MM-DD
+== 1.1.3 / 2008-06-20
+
+* Overfull and underfull hbox output can now be shown specifically with -V
+  switch.
+
+== 1.1.2 / 2008-04-08
 
 * BiBTeX style files (*.bst) now are copied from the vendor dir to
   the build dir if needed.
