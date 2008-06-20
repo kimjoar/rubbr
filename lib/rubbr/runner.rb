@@ -16,13 +16,16 @@ module Rubbr
       # Contains a list of possible warnings after a run.
       attr_accessor :warnings
 
+      # Contains a list of possible verboser warnings after a run.
+      attr_accessor :verboser_warnings
+
       # Contains a list of possible errors after a run.
       attr_accessor :errors
 
       def initialize(input_file, executable)
         @input_file = input_file
         @executable = valid_executable executable
-        @warnings = []
+        @verboser_warnings = []
         @errors = []
 
         if File.exists? @input_file
@@ -40,17 +43,16 @@ module Rubbr
 
           run = `#@executable #@input_file`
           lines = run.split("\n")
+          @warnings = run.grep(messages).sort
 
           if Rubbr.options[:verboser]
 
             lines.each_with_index do |line, i|
               if line =~ verbose_messages
-                @warnings << line
-                @warnings << lines[i+1]
+                @verboser_warnings << line
+                @verboser_warnings << lines[i+1]
               end
             end
-          else
-            @warnings = run.grep(messages).sort
           end
 
           while lines.shift
@@ -65,6 +67,12 @@ module Rubbr
         unless @warnings.empty?
           notice "Warnings from #@executable:"
           @warnings.each do |message|
+            warning message
+          end
+        end
+        unless @verboser_warnings.empty?
+          notice "Verboser warnings from #@executable:"
+          @verboser_warnings.each do |message|
             warning message
           end
         end
