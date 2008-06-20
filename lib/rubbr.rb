@@ -48,7 +48,7 @@ module Rubbr
           @@cmd_opts[:verbose] = true
         end
 
-        opts.on('-V', '--verboser', 'Enable very verbose feedback') do
+        opts.on('-V', '--verboser', 'Enable verbose feedback for hboxes') do
           @@cmd_opts[:verbose] = true
           @@cmd_opts[:verboser] = true
         end

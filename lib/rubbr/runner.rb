@@ -22,6 +22,7 @@ module Rubbr
       def initialize(input_file, executable)
         @input_file = input_file
         @executable = valid_executable executable
+        @warnings = []
         @errors = []
 
         if File.exists? @input_file
@@ -35,10 +36,23 @@ module Rubbr
       def run
         disable_stdinn do # No input in case of error correction dialogue
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
+          verbose_messages = /^(Overfull \\hbox|Underfull \\hbox)/
+
           run = `#@executable #@input_file`
-          puts run if Rubbr.options[:verboser]
-          @warnings = run.grep(messages).sort
           lines = run.split("\n")
+
+          if Rubbr.options[:verboser]
+
+            lines.each_with_index do |line, i|
+              if line =~ verbose_messages
+                @warnings << line
+                @warnings << lines[i+1]
+              end
+            end
+          else
+            @warnings = run.grep(messages).sort
+          end
+
           while lines.shift
             if lines.first =~ /^!/ # LaTeX Error, processing halted
               3.times { @errors << lines.shift }
@@ -48,7 +62,6 @@ module Rubbr
       end
 
       def feedback
-        return if Rubbr.options[:verboser] # No preformatted output.
         unless @warnings.empty?
           notice "Warnings from #@executable:"
           @warnings.each do |message|
