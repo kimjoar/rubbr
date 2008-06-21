@@ -8,7 +8,7 @@ module Rubbr
     require 'yaml'
 
     def self.d?
-      return true if Rubbr.options[:force]
+      return false if Rubbr.options[:force]
 
       sums = inventory
       if changes?(sums)
