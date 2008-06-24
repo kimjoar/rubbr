@@ -22,6 +22,7 @@ module Rubbr
           :verbose           => false,
           :verboser          => false,
           :color             => false,
+          :view_build        => false,
           :format            => :dvi,
           :engine            => :latex
         }

@@ -45,6 +45,12 @@ module Rubbr
           @@cmd_opts[:view] = true
         end
 
+        opts.on('-D', '--display-build',
+          'Display the build version of the document') do
+          @@cmd_opts[:view] = true
+          @@cmd_opts[:view_build] = true
+        end
+
         opts.on('-s', '--spell', 'Spell check source files') do
           @@cmd_opts[:spell] = true
         end

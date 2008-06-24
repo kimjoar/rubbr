@@ -28,6 +28,11 @@ module Rubbr
                   "#@distribution_name.#@view_name")
       end
 
+      def build_file
+        File.join(Rubbr.options[:build_dir],
+                  "#{Rubbr.options[:base_file]}.#@view_name")
+      end
+
       def initialize
         @distribution_name = Rubbr.options[:distribution_name]
 
@@ -43,7 +48,10 @@ module Rubbr
 
       def launch
         return unless viewer = find_viewer
-        fork { exec "#{viewer} #{distribution_file}" }
+
+        file = Rubbr.options[:view_build] ? build_file : distribution_file
+        fork { exec "#{viewer} #{file}" }
+
         notice "Display of #@view_name completed for: #{@distribution_name}" +
                ".#@view_name in #{Rubbr.options[:distribution_dir]}"
       end
