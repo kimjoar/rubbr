@@ -1,7 +1,7 @@
 == 1.1.5 / 2008-MM-DD
 
-* Force option.
-*
+* Force option (-F).
+* Display build file option (-D).
 
 == 1.1.4 / 2008-06-20
 
