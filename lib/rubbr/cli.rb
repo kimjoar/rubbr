@@ -14,6 +14,10 @@ module Rubbr
       puts color?("  * #{message}", "\e[31m")
     end
 
+    def statusdot!
+      print color?('.', "\e[32m") if Rubbr.options[:verbose]
+    end
+
     def color?(msg, code)
       Rubbr.options[:color] ? "#{code}#{msg}" : msg
     end

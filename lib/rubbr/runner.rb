@@ -41,6 +41,8 @@ module Rubbr
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
           verbose_messages = /^(Overfull \\hbox|Underfull \\hbox)/
 
+          statusdot!
+
           run = `#@executable #@input_file`
           lines = run.split("\n")
           @warnings = run.grep(messages).sort
