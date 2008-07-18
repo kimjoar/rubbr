@@ -30,20 +30,13 @@ module Rubbr
               bibtex = Rubbr::Runner::BibTeX.new(base_bibtex_file)
             end
 
-            if latex.warnings.join =~ /No file .+\.(aux|toc)/
+            while latex.warnings.join =~ /No file .+\.(aux|brf|toc|lot|lof)/
               latex = preprocessor.new(base_latex_file)
             end
 
-            if latex.warnings.join =~ /There were undefined citations/
+            while latex.warnings.join =~ /Label\(s\) may have changed\. Rerun/
               latex = preprocessor.new(base_latex_file)
             end
-
-            if latex.warnings.join =~ /Label\(s\) may have changed\. Rerun/
-              latex = preprocessor.new(base_latex_file)
-            end
-
-            # last run needed to get lof to be proper
-            latex = preprocessor.new(base_latex_file)
 
             latex.feedback
             if bibtex
