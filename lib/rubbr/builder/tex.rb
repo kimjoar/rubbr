@@ -30,7 +30,11 @@ module Rubbr
               bibtex = Rubbr::Runner::BibTeX.new(base_bibtex_file)
             end
 
-            while latex.warnings.join =~ /No file .+\.(aux|brf|toc|lot|lof)/
+            if latex.warnings.join =~ /No file .+\.aux/
+              latex = preprocessor.new(base_latex_file)
+            end
+
+            while latex.warnings.join =~ /No file .+\.(brf|toc|lot|lof)/
               latex = preprocessor.new(base_latex_file)
             end
 
