@@ -26,6 +26,7 @@ module Rubbr
         @input_file = input_file
         @executable = valid_executable executable
         @verboser_warnings = []
+        @full_count = 0
         @errors = []
 
         if File.exists? @input_file
@@ -40,12 +41,14 @@ module Rubbr
         disable_stdinn do # No input in case of error correction dialogue
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
           verbose_messages = /^(Overfull \\hbox|Underfull \\hbox)/
+          notice "Over/underfull h/vboxes: #{f}"
 
           statusdot!
 
           run = `#@executable #@input_file`
           lines = run.split("\n")
           @warnings = run.grep(messages).sort
+          @full_count = @warnings.grep(/^(Overfull \\[vh]box|Underfull \\[vh]box)/).size
 
           if Rubbr.options[:verboser]
 
@@ -71,15 +74,17 @@ module Rubbr
           @warnings.each do |message|
             warning message
           end
-          f = @warnings.grep(/^(Overfull \\[vh]box|Underfull \\[vh]box)/).size
-          notice "Over/underfull h/vboxes: #{f}"
         end
+
         unless @verboser_warnings.empty?
           notice "Verboser warnings from #@executable:"
           @verboser_warnings.each do |message|
             warning message
           end
         end
+
+        notice "Full count: #@full_count"
+
         unless @errors.empty?
           notice "Errors from #@executable:"
           @errors.each do |message|
