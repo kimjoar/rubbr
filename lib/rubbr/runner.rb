@@ -41,7 +41,6 @@ module Rubbr
         disable_stdinn do # No input in case of error correction dialogue
           messages = /^(Overfull|Underfull|No file|Package \w+ Warning:|LaTeX Warning:)/
           verbose_messages = /^(Overfull \\hbox|Underfull \\hbox)/
-          notice "Over/underfull h/vboxes: #{f}"
 
           statusdot!
 
