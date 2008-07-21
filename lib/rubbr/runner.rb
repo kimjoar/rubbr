@@ -71,6 +71,8 @@ module Rubbr
           @warnings.each do |message|
             warning message
           end
+          f = @warnings.grep(/^(Overfull \\[vh]box|Underfull \\[vh]box)/).size
+          notice "Over/underfull h/vboxes: #{f}"
         end
         unless @verboser_warnings.empty?
           notice "Verboser warnings from #@executable:"
