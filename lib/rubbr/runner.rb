@@ -82,7 +82,7 @@ module Rubbr
           end
         end
 
-        notice "Full count: #@full_count"
+        notice "Full count: #@full_count" if @full_count > 0
 
         unless @errors.empty?
           notice "Errors from #@executable:"
