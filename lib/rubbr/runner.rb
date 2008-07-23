@@ -46,7 +46,7 @@ module Rubbr
 
           run = `#@executable #@input_file`
           lines = run.split("\n")
-          @warnings = run.grep(messages).sort
+          @warnings = run.grep(messages)
           @full_count = @warnings.grep(/^(Overfull \\[vh]box|Underfull \\[vh]box)/).size
 
           if Rubbr.options[:verboser]
