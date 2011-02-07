@@ -1,2 +1,2 @@
 $:.push File.join(File.dirname(__FILE__), '..', 'lib')
-%w(spec rubbr).each { |l| require l }
+%w(rspec rubbr).each { |lib| require lib }
