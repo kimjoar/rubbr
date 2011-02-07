@@ -3,6 +3,7 @@
 
 * Force option (-F).
 * Display build file option (-D).
+* Works on Ruby 1.9.2
 
 1.1.4 / 2008-06-20
 ==================
