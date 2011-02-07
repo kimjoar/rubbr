@@ -42,6 +42,10 @@ module Rubbr
               latex = preprocessor.new(base_latex_file)
             end
 
+            while latex.warnings.join =~ /There were undefined citations/
+              latex = preprocessor.new(base_latex_file)
+            end
+
             latex.feedback
             if bibtex
               bibtex.feedback
