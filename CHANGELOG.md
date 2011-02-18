@@ -4,6 +4,7 @@
 * Force option (-F).
 * Display build file option (-D).
 * Works on Ruby 1.9.2
+* Display now works out of the box on OS X (using Preview)
 
 1.1.4 / 2008-06-20
 ==================
