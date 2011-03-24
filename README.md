@@ -29,22 +29,29 @@ Standard project layout:
 
     root_dir         = Dir.pwd
     source_dir       = 'src'
-    
+
     @defaults ||= {
-      :root_dir          => File.pwd,
+      :root_dir          => root_dir,
       :source_dir        => source_dir,
       :build_dir         => 'tmp',
       :distribution_dir  => 'dist',
-      :template_file     => 'template.erb',
       :base_file         => 'base',
       :vendor_dir        => source_dir + '/vendor',
       :graphics_dir      => source_dir + '/graphics',
       :spell_dir         => source_dir,
       :spell_file        => 'dictionary.ispell',
-      :distribution_name => distribution_name(root_dir)
+      :inventory_file    => '.inventory',
+      :distribution_name => distribution_name(root_dir),
+      :force             => false,
+      :verbose           => false,
+      :verboser          => false,
+      :color             => false,
+      :view_build        => false,
+      :format            => :dvi,
+      :engine            => :latex
     }
 
-All these can be changed with a config.yml in the root_dir:
+All these can be changed with a `config.yml` in the `root_dir`:
 
     ---
     build_dir: build
