@@ -15,11 +15,14 @@ Synopsis
 Usage: `rubbr [options]`
 
     -f, --format [FORMAT]            Select output format (dvi, ps, pdf)
+    -F, --force                      Force execution regardless of changes
     -e, --engine [ENGINE]            Select processing engine (latex, pdflatex)
     -d, --display                    Display the document
+    -D, --display-build              Display the build version of the document
     -s, --spell                      Spell check source files
     -v, --verbose                    Enable verbose feedback
-    -V, --verboser                   Enable very verbose feedback
+    -V, --verboser                   Enable verbose feedback for hboxes
+    -c, --color                      Enable colorized feedback
     -h, --help                       Show this help message
 
 Standard project layout:
