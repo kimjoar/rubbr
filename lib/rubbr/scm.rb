@@ -7,19 +7,21 @@ module Rubbr
     class Base
       include Rubbr::Cli
 
-      # The name of the SCM system. 
+      # The name of the SCM system.
       attr_accessor :name
 
-      # The Mercurial executable.
+      # The SCM executable.
       attr_accessor :executable
 
       # The revision and date of the tip/head/latest changeset.
       attr_accessor :revision, :date
 
       def collect_scm_stats
-        { :name => @name,
+        {
+          :name     => @name,
           :revision => @revision,
-          :date => @date }
+          :date     => @date
+        }
       end
     end
 
@@ -28,10 +30,12 @@ module Rubbr
         Rubbr::Scm::Subversion.new.collect_scm_stats
       elsif File.exists? File.join(dir, '.hg')
         Rubbr::Scm::Mercurial.new.collect_scm_stats
+      elsif File.exists? File.join(dir, '.git')
+        Rubbr::SCM::Git.new.collect_scm_stats
       end
     end
 
-    %w(mercurial subversion).each do
+    %w(mercurial subversion git).each do
       |f| require File.dirname(__FILE__) + "/scm/#{f}"
     end
   end
